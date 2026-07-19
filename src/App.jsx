@@ -5,6 +5,8 @@ import heroImg from './assets/hero.png'
 import './App.css'
 
 function App() {
+
+  const modosStyles = "w-full rounded-xl border px-4 py-2 text-left"
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <main className="mx-auto flex min-h-screen max-w-xl flex-col px-5 py-10">
@@ -33,9 +35,9 @@ function App() {
               Modo
             </h2>
 
-            <div className="space-y-3">
+            <div className="space-y-2">
 
-              <button className="w-full rounded-xl border border-blue-500 bg-blue-500/10 px-4 py-4 text-left transition hover:bg-blue-500/20">
+              <button className={`${modosStyles}  border-blue-500 bg-blue-500/10 transition hover:bg-blue-500/20`}>
                 <div className="font-semibold">
                   Me falta una nota
                 </div>
@@ -47,7 +49,7 @@ function App() {
 
               <button
                 disabled
-                className="w-full cursor-not-allowed rounded-xl border border-gray-700 bg-gray-900 px-4 py-4 text-left opacity-60"
+                className={`${modosStyles} cursor-not-allowed border-gray-700 bg-gray-900 opacity-60`}
               >
                 <div className="font-semibold">
                    Me faltan dos notas
@@ -60,7 +62,7 @@ function App() {
 
               <button
                 disabled
-                className="w-full cursor-not-allowed rounded-xl border border-gray-700 bg-gray-900 px-4 py-4 text-left opacity-60"
+                className={`${modosStyles} cursor-not-allowed border-gray-700 bg-gray-900 opacity-60`}
               >
                 <div className="font-semibold">
                    Me faltan varias notas
@@ -75,7 +77,7 @@ function App() {
           </div>
 
           {/* Separador */}
-          <div className="my-8 h-px bg-gray-700" />
+          <div className="my-3 mb-5 h-px bg-gray-700" />
 
           {/* Evaluaciones */}
           <div>
@@ -139,7 +141,7 @@ function App() {
           </div>
 
           {/* Botón */}
-          <button className="mt-8 w-full rounded-xl bg-blue-600 py-4 text-lg font-semibold transition hover:bg-blue-500">
+          <button className="mt-8 w-full rounded-xl bg-blue-600 py-2 text-lg font-semibold transition hover:bg-blue-500">
             Calcular
           </button>
 
