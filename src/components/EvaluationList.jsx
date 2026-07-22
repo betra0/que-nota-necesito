@@ -32,10 +32,11 @@ function EvaluationList() {
               + Agregar
             </button>
           </div>
-          <div className="mb-2 grid grid-cols-4 gap-3 text-xs uppercase tracking-wider text-gray-500">
-            <span className="col-span-2">Nombre</span>
-            <span>Nota</span>
-            <span>Ponderación</span>
+          <div className="mb-2 grid grid-cols-14 gap-3 text-xs uppercase tracking-wider text-gray-500">
+            <span className="col-span-1">#</span>
+            <span className="col-span-6">Nombre</span>
+            <span className="col-span-4">Nota</span>
+            <span className="col-span-3">Ponderación</span>
           </div>
 
           <div className="space-y-3">
