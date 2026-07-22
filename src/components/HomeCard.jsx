@@ -2,12 +2,37 @@ import EvaluationList from "./EvaluationList"
 import ModeSelector from "./ModeSelector"
 import ResultCard from "./ResultCard"
 import TargetGrade from "./TargetGrade"
+import { useState } from "react";
 
 
 
 
 
 function HomeCard() {
+
+
+  const [evaluations, setEvaluations]= useState([
+    { name: '', grade: null, weight: null },
+
+  ]);
+
+  const addEvaluation =() => {
+    setEvaluations([...evaluations, { name: '', grade: null, weight: null }]);
+  }
+  const removeEvaluation = (index) => {
+    const newEvaluations = [...evaluations];
+    newEvaluations.splice(index, 1);
+    setEvaluations(newEvaluations);
+  }
+  const updateEvaluation = (index, field, value) => {
+  setEvaluations(prev =>
+    prev.map((evaluation, i) =>
+      i === index
+        ? { ...evaluation, [field]: value }
+        : evaluation
+    )
+  );
+};
 
   
   return (
@@ -39,7 +64,12 @@ function HomeCard() {
         <div className="my-3 mb-5 h-px bg-gray-700" />
 
         {/* Evaluaciones */}
-        <EvaluationList />
+        <EvaluationList 
+          evaluations={evaluations}
+          addEvaluation={addEvaluation}
+          removeEvaluation={removeEvaluation}
+          updateEvaluation={updateEvaluation}
+        />
         
         {/* Separador */}
         <div className="my-4 h-px bg-gray-700" />

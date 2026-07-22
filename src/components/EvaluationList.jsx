@@ -1,19 +1,12 @@
 import { useState } from "react";
 
-function EvaluationList() {
+function EvaluationList({ evaluations, addEvaluation, removeEvaluation, updateEvaluation }) {
   
-  const [evaluations, setEvaluations]= useState([
-    { name: '', grade: null, weight: null },
-
-  ]);
-
-  const addHandler =() => {
-    setEvaluations([...evaluations, { name: '', grade: null, weight: null }]);
+  const addHandler = () => {
+    addEvaluation();
   }
   const removeHandler = (index) => {
-    const newEvaluations = [...evaluations];
-    newEvaluations.splice(index, 1);
-    setEvaluations(newEvaluations);
+    removeEvaluation(index);
   }
 
   
@@ -49,8 +42,8 @@ function EvaluationList() {
                 weight={evaluation.weight}
                 index={index}
                 evaluations={evaluations}
-                setEvaluations={setEvaluations}
-                removeFunction={() => removeHandler(index)}
+                updateEvaluation={updateEvaluation}
+                removeHandler={removeHandler}
               />
             ))}
 
@@ -79,32 +72,21 @@ function EvaluationList() {
 
 
 
-function EvaluationRow({ name, grade, weight, index, evaluations, setEvaluations }) {
-  const removeHandler = (index) => {
-    const newEvaluations = [...evaluations];
-    newEvaluations.splice(index, 1);
-    setEvaluations(newEvaluations);
-  }
+function EvaluationRow({ name, grade, weight, index, evaluations, removeHandler, updateEvaluation }) {
   const setName = (index, value) => {
-    const newEvaluations = [...evaluations];
-    newEvaluations[index].name = value;
-    setEvaluations(newEvaluations);
+    updateEvaluation(index, 'name', value);
   }
   const setGrade = (index, value) => {
     if (value !== '' && (isNaN(value) || value < 0 || value > 7)) {
       return;
     }
-    const newEvaluations = [...evaluations];
-    newEvaluations[index].grade = value;
-    setEvaluations(newEvaluations);
+    updateEvaluation(index, 'grade', value);
   }
   const setWeight = (index, value) => {
     if (value !== '' && (isNaN(value) || value < 0 || value > 100)) {
       return;
     }
-    const newEvaluations = [...evaluations];
-    newEvaluations[index].weight = value;
-    setEvaluations(newEvaluations);
+    updateEvaluation(index, 'weight', value);
   }
 
   
