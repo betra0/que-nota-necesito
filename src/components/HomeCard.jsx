@@ -36,18 +36,7 @@ function HomeCard() {
 
 
         {/* Separador */}
-        <div className="my-3 mb-5 h-px bg-gray-700" />        {/* Resultado */}
-        <div className="mt-8 rounded-2xl border border-gray-700 bg-gray-900 p-6 text-center">
-          <p className="text-gray-400">
-            Resultado
-          </p>
-          <h3 className="mt-4 text-5xl font-bold text-blue-400">
-            3.48
-          </h3>
-          <p className="mt-3 text-gray-300">
-            Necesitas al menos un <strong>3.48</strong> para alcanzar tu objetivo.
-          </p>
-        </div>
+        <div className="my-3 mb-5 h-px bg-gray-700" />
 
         {/* Evaluaciones */}
         <EvaluationList />
