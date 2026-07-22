@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function EvaluationList({ evaluations, addEvaluation, removeEvaluation, updateEvaluation }) {
+function EvaluationList({ evaluations, addEvaluation, removeEvaluation, updateEvaluation, configGrade }) {
   
   const addHandler = () => {
     addEvaluation();
@@ -44,6 +44,7 @@ function EvaluationList({ evaluations, addEvaluation, removeEvaluation, updateEv
                 evaluations={evaluations}
                 updateEvaluation={updateEvaluation}
                 removeHandler={removeHandler}
+                configGrade={configGrade}
               />
             ))}
 
@@ -72,12 +73,12 @@ function EvaluationList({ evaluations, addEvaluation, removeEvaluation, updateEv
 
 
 
-function EvaluationRow({ name, grade, weight, index, evaluations, removeHandler, updateEvaluation }) {
+function EvaluationRow({ name, grade, weight, index, evaluations, removeHandler, updateEvaluation, configGrade }) {
   const setName = (index, value) => {
     updateEvaluation(index, 'name', value);
   }
   const setGrade = (index, value) => {
-    if (value !== '' && (isNaN(value) || value < 0 || value > 7)) {
+    if (value !== '' && (isNaN(value) || value < configGrade.gradeMin || value > configGrade.gradeMax)) {
       return;
     }
     updateEvaluation(index, 'grade', value);

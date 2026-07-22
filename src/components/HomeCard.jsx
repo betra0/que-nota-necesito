@@ -15,6 +15,8 @@ function HomeCard() {
     { name: '', grade: null, weight: null },
 
   ]);
+  const [configGrade, setConfigGrade] = useState({'gradeMin': 1.0, 'gradeMax': 7.0});
+  const [targetGrade, setTargetGrade] = useState(4.0);
 
   const addEvaluation =() => {
     setEvaluations([...evaluations, { name: '', grade: null, weight: null }]);
@@ -32,6 +34,15 @@ function HomeCard() {
         : evaluation
     )
   );
+};
+
+const summitHandler = (e) => {
+  e.preventDefault();
+  console.log('Evaluations:', evaluations);
+  console.log('Target Grade:', targetGrade);
+  console.log('Config Grade:', configGrade);
+
+
 };
 
   
@@ -69,6 +80,7 @@ function HomeCard() {
           addEvaluation={addEvaluation}
           removeEvaluation={removeEvaluation}
           updateEvaluation={updateEvaluation}
+          configGrade={configGrade}
         />
         
         {/* Separador */}
@@ -79,7 +91,12 @@ function HomeCard() {
 
 
         {/* Botón */}
-        <button className="mt-8 w-full rounded-xl bg-blue-600 py-2 text-lg font-semibold transition hover:bg-blue-500">
+        <button className="mt-8 w-full rounded-xl bg-blue-600 py-2 text-lg font-semibold transition hover:bg-blue-500"
+        type="submit"
+        onClick={summitHandler}
+
+
+        >
           Calcular
         </button>
         <ResultCard/>
