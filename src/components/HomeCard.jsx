@@ -1,8 +1,15 @@
 import EvaluationList from "./EvaluationList"
+import ModeSelector from "./ModeSelector"
+import ResultCard from "./ResultCard"
+import TargetGrade from "./TargetGrade"
+
+
+
+
 
 function HomeCard() {
 
-  const modosStyles = "w-full rounded-xl border px-4 py-2 text-left"
+  
   return (
     <>   
 
@@ -19,82 +26,17 @@ function HomeCard() {
   
         </p>
       </header>
+
       {/* Card Principal */}
       <section className="rounded-3xl border border-gray-700 bg-gray-800 p-6 shadow-2xl">
+
+        
         {/* Modos */}
-        <div>
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-widest text-gray-400">
-            Modo
-          </h2>
-          <div className="space-y-2">
-            <button className={`${modosStyles}  border-blue-500 bg-blue-500/10 transition hover:bg-blue-500/20`}>
-              <div className="font-semibold">
-                Me falta una nota
-              </div>
-              <p className="mt-1 text-sm text-gray-400">
-                Calcula una única nota pendiente.
-              </p>
-            </button>
-            <button
-              disabled
-              className={`${modosStyles} cursor-not-allowed border-gray-700 bg-gray-900 opacity-60`}
-            >
-              <div className="font-semibold">
-                 Me faltan dos notas
-              </div>
-              <p className="mt-1 text-sm text-gray-500">
-                Disponible próximamente.
-              </p>
-            </button>
-            <button
-              disabled
-              className={`${modosStyles} cursor-not-allowed border-gray-700 bg-gray-900 opacity-60`}
-            >
-              <div className="font-semibold">
-                 Me faltan varias notas
-              </div>
-              <p className="mt-1 text-sm text-gray-500">
-                Disponible próximamente.
-              </p>
-            </button>
-          </div>
-        </div>
+        <ModeSelector/>
+
+
         {/* Separador */}
-        <div className="my-3 mb-5 h-px bg-gray-700" />
-
-        {/* Evaluaciones */}
-        <EvaluationList />
-        
-        {/* Separador */}
-        <div className="my-8 h-px bg-gray-700" />
-
-        
-        {/* Objetivo */}
-        <div>
-          <label className="mb-3 block font-semibold">
-            Nota objetivo
-          </label>
-            <section className="grid grid-cols-14 gap-3">
-              <input
-              defaultValue="4.0"
-              className="w-full rounded-xl border border-gray-700 bg-gray-900 px-4 py-3 text-center text-lg outline-none transition focus:border-blue-500
-                col-span-11
-              "
-              />
-              <span className="col-span-3 w-full rounded-xl border border-gray-700 bg-gray-800 flex items-center justify-center
-                text-md font-semibold text-gray-400
-              "  >
-                100 %
-                </span>
-            </section>
-        </div>
-
-
-        {/* Botón */}
-        <button className="mt-8 w-full rounded-xl bg-blue-600 py-2 text-lg font-semibold transition hover:bg-blue-500">
-          Calcular
-        </button>
-        {/* Resultado */}
+        <div className="my-3 mb-5 h-px bg-gray-700" />        {/* Resultado */}
         <div className="mt-8 rounded-2xl border border-gray-700 bg-gray-900 p-6 text-center">
           <p className="text-gray-400">
             Resultado
@@ -106,6 +48,23 @@ function HomeCard() {
             Necesitas al menos un <strong>3.48</strong> para alcanzar tu objetivo.
           </p>
         </div>
+
+        {/* Evaluaciones */}
+        <EvaluationList />
+        
+        {/* Separador */}
+        <div className="my-4 h-px bg-gray-700" />
+
+        
+        <TargetGrade />
+
+
+        {/* Botón */}
+        <button className="mt-8 w-full rounded-xl bg-blue-600 py-2 text-lg font-semibold transition hover:bg-blue-500">
+          Calcular
+        </button>
+        <ResultCard/>
+
       </section>
     
     </>
