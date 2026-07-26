@@ -1,25 +1,43 @@
+import { oneMissingCalculator } from "../services/oneMissingCalculator";
 import EvaluationList from "./EvaluationList"
 import ModeSelector from "./ModeSelector"
 import ResultCard from "./ResultCard"
 import TargetGrade from "./TargetGrade"
-import { useState } from "react";
-
-
+import { useState, useEffect, useMemo } from "react";
 
 
 
 function HomeCard() {
 
-
   const [evaluations, setEvaluations]= useState([
-    { name: '', grade: null, weight: null },
+    { name: '', grade: '', weight: '' },
+    { name: '', grade: '', weight: '' },
 
   ]);
   const [configGrade, setConfigGrade] = useState({'gradeMin': 1.0, 'gradeMax': 7.0});
   const [targetGrade, setTargetGrade] = useState(4.0);
 
+  const validate = (evaluations, configGrade, targetGrade) => {
+    // Validar que solo alla solo una evaluación sin nota, esten todas las ponderaciones, y este la nota objetivo y los config de nota minima y maxima
+    const evaluationsWithoutGrade = evaluations.filter(evaluation => evaluation.grade === '');
+    const allWeightsPresent = evaluations.every(evaluation => evaluation.weight !== '');
+    const targetGradePresent = targetGrade !== '';
+    const configGradeValid = configGrade.gradeMin !== '' && configGrade.gradeMax !== '';
+
+    return({
+      grade: (evaluationsWithoutGrade.length === 1 && evaluations.length > 1),
+      weight: allWeightsPresent,
+      target: targetGradePresent,
+      config: configGradeValid
+    })
+
+  }
+
+  const validationResults = useMemo(() => validate(evaluations, configGrade, targetGrade), [evaluations, configGrade, targetGrade]);
+
+
   const addEvaluation =() => {
-    setEvaluations([...evaluations, { name: '', grade: null, weight: null }]);
+    setEvaluations([...evaluations, { name: '', grade: '', weight: '' }]);
   }
   const removeEvaluation = (index) => {
     const newEvaluations = [...evaluations];
@@ -27,23 +45,43 @@ function HomeCard() {
     setEvaluations(newEvaluations);
   }
   const updateEvaluation = (index, field, value) => {
-  setEvaluations(prev =>
-    prev.map((evaluation, i) =>
-      i === index
-        ? { ...evaluation, [field]: value }
-        : evaluation
-    )
-  );
-};
+    setEvaluations(prev =>
+      prev.map((evaluation, i) =>
+        i === index
+          ? { ...evaluation, [field]: value }
+          : evaluation
+      )
+    );
+  };
 
-const summitHandler = (e) => {
-  e.preventDefault();
-  console.log('Evaluations:', evaluations);
-  console.log('Target Grade:', targetGrade);
-  console.log('Config Grade:', configGrade);
+  const summitHandler = (e) => {
+    e.preventDefault();
+    console.log('Evaluations:', evaluations);
+    console.log('Target Grade:', targetGrade);
+    console.log('Config Grade:', configGrade);
+    if (!validationResults.grade || !validationResults.weight || !validationResults.target || !validationResults.config) {
+      console.log('Validation failed. Cannot submit.');
+      return;
+    }
+    const evaluationsFormatted = evaluations.map(evaluation => ({
+      ...evaluation,
+      grade: evaluation.grade === '' ? null : parseFloat(evaluation.grade),
+      weight: evaluation.weight === '' ? null : parseFloat(evaluation.weight),
+    }));
+    oneMissingCalculator({evaluations: evaluationsFormatted, targetGrade, configGrade})
 
 
-};
+  };
+
+
+  //useEffect(() => {
+  //}, [evaluations, targetGrade, configGrade]);
+
+  const allValid = validationResults.grade && validationResults.weight && validationResults.target && validationResults.config;
+  const colorSumitButton = allValid ? 'bg-blue-600 hover:bg-blue-500' : 'bg-gray-600 cursor-not-allowed';
+
+
+
 
   
   return (
@@ -91,7 +129,7 @@ const summitHandler = (e) => {
 
 
         {/* Botón */}
-        <button className="mt-8 w-full rounded-xl bg-blue-600 py-2 text-lg font-semibold transition hover:bg-blue-500"
+        <button className={`mt-8 w-full rounded-xl py-2 text-lg font-semibold transition ${colorSumitButton}`}
         type="submit"
         onClick={summitHandler}
 

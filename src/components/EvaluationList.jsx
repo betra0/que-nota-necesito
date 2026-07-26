@@ -81,6 +81,7 @@ function EvaluationRow({ name, grade, weight, index, evaluations, removeHandler,
     if (value !== '' && (isNaN(value) || value < configGrade.gradeMin || value > configGrade.gradeMax)) {
       return;
     }
+    //console.log('Updating grade for index', index, 'to value', value, typeof value);     
     updateEvaluation(index, 'grade', value);
   }
   const setWeight = (index, value) => {
