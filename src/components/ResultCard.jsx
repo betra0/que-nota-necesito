@@ -1,6 +1,8 @@
 import { useState } from "react";
 
-function ResultCard() {
+function ResultCard({
+  result
+}) {
   
 
 
@@ -13,10 +15,10 @@ function ResultCard() {
             Resultado
           </p>
           <h3 className="mt-4 text-5xl font-bold text-blue-400">
-            3.48
+            {result.gradeMissing}
           </h3>
           <p className="mt-3 text-gray-300">
-            Necesitas al menos un <strong>3.48</strong> para alcanzar tu objetivo.
+            Necesitas al menos un <strong>{result.gradeMissing}</strong> para alcanzar tu objetivo.
           </p>
         </div>
     </>

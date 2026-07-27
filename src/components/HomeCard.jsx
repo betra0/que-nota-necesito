@@ -15,7 +15,8 @@ function HomeCard() {
 
   ]);
   const [configGrade, setConfigGrade] = useState({'gradeMin': 1.0, 'gradeMax': 7.0});
-  const [targetGrade, setTargetGrade] = useState(4.0);
+  const [targetGrade, setTargetGrade] = useState('4');
+  const [result, setResult] =useState(null)
 
   const validate = (evaluations, configGrade, targetGrade) => {
     // Validar que solo alla solo una evaluación sin nota, esten todas las ponderaciones, y este la nota objetivo y los config de nota minima y maxima
@@ -31,6 +32,12 @@ function HomeCard() {
       config: configGradeValid
     })
 
+  }
+  const targetGradeHandler = (value)=>{
+    if (value !== '' && isNaN(value)){
+      return
+    }
+    setTargetGrade(value)
   }
 
   const validationResults = useMemo(() => validate(evaluations, configGrade, targetGrade), [evaluations, configGrade, targetGrade]);
@@ -68,7 +75,8 @@ function HomeCard() {
       grade: evaluation.grade === '' ? null : parseFloat(evaluation.grade),
       weight: evaluation.weight === '' ? null : parseFloat(evaluation.weight),
     }));
-    oneMissingCalculator({evaluations: evaluationsFormatted, targetGrade, configGrade})
+    const {gradeMissing, evaluation} = oneMissingCalculator({evaluations: evaluationsFormatted, targetGrade, configGrade})   
+    setResult({gradeMissing, evaluation}) 
 
 
   };
@@ -125,7 +133,7 @@ function HomeCard() {
         <div className="my-4 h-px bg-gray-700" />
 
         
-        <TargetGrade />
+        <TargetGrade handlerInput={targetGradeHandler} targetGrade={targetGrade} />
 
 
         {/* Botón */}
@@ -137,7 +145,7 @@ function HomeCard() {
         >
           Calcular
         </button>
-        <ResultCard/>
+        {result? <ResultCard result={result}/>:null}
 
       </section>
     

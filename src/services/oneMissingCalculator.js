@@ -18,13 +18,17 @@ export function oneMissingCalculator({evaluations, targetGrade, configGrade}) {
     console.log(evalIncognita)
     console.log('---------------')
     console.log(otherEvals)
-    let numerador=4
+    let numerador=targetGrade
     for (const evaluation of otherEvals){
         numerador = numerador-(evaluation.grade*evaluation.weight/totalWeight)
     }
     const result=numerador/((evalIncognita.weight)/(totalWeight))
     console.log(result)
 
+    return({
+        gradeMissing:result,
+        evaluation:evalIncognita
+    })
 }
 
 
