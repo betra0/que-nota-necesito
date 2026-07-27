@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { IconHelpCircle } from '@tabler/icons-react';
 
 function EvaluationList({ evaluations, addEvaluation, removeEvaluation, updateEvaluation, configGrade }) {
   
@@ -22,7 +23,7 @@ function EvaluationList({ evaluations, addEvaluation, removeEvaluation, updateEv
               Evaluaciones
             </h2>
             <button className="text-sm text-blue-400 hover:text-blue-300">
-              + Agregar
+              <IconHelpCircle/>
             </button>
           </div>
           <div className="mb-2 grid grid-cols-14 gap-3 text-xs uppercase tracking-wider text-gray-500">

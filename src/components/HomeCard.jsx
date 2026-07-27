@@ -15,7 +15,7 @@ function HomeCard() {
 
   ]);
   const [configGrade, setConfigGrade] = useState({'gradeMin': 1.0, 'gradeMax': 7.0});
-  const [targetGrade, setTargetGrade] = useState('4');
+  const [targetGrade, setTargetGrade] = useState('4.0');
   const [result, setResult] =useState(null)
 
   const validate = (evaluations, configGrade, targetGrade) => {
@@ -40,7 +40,11 @@ function HomeCard() {
     setTargetGrade(value)
   }
 
+  const sumWeight = () => {
+   return evaluations.reduce((sum, evaluation) => sum + (evaluation.weight===''?0:parseFloat(evaluation.weight)),0)
+  }
   const validationResults = useMemo(() => validate(evaluations, configGrade, targetGrade), [evaluations, configGrade, targetGrade]);
+  const totalWeight = useMemo(() => sumWeight(), [evaluations]);
 
 
   const addEvaluation =() => {
@@ -133,7 +137,7 @@ function HomeCard() {
         <div className="my-4 h-px bg-gray-700" />
 
         
-        <TargetGrade handlerInput={targetGradeHandler} targetGrade={targetGrade} />
+        <TargetGrade handlerInput={targetGradeHandler} targetGrade={targetGrade} totalWeight={totalWeight} />
 
 
         {/* Botón */}

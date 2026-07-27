@@ -3,7 +3,7 @@ import { useState } from "react";
 function TargetGrade({
   handlerInput,
   targetGrade,
-
+  totalWeight,
 }) {
 
 
@@ -26,7 +26,7 @@ function TargetGrade({
               <span className="col-span-3 w-full rounded-xl border border-gray-700 bg-gray-800 flex items-center justify-center
                 text-md font-semibold text-gray-400
               "  >
-                100 %
+                {totalWeight} %
                 </span>
             </section>
         </div>
