@@ -28,7 +28,7 @@ function EvaluationList({ evaluations, addEvaluation, removeEvaluation, updateEv
           </div>
           <div className="mb-2 grid grid-cols-14 gap-3 text-xs uppercase tracking-wider text-gray-500">
             <span className="col-span-1">#</span>
-            <span className="col-span-6">Nombre</span>
+            <span className="col-span-6">Nombre (opcional)</span>
             <span className="col-span-4">Nota</span>
             <span className="col-span-3">Ponderación</span>
           </div>
@@ -99,7 +99,7 @@ function EvaluationRow({ name, grade, weight, index, evaluations, removeHandler,
                 x
               </button>
               <input
-                placeholder="Ej: Prueba o Taller"
+                placeholder="Ej: Prueba o Taller (opcional)"
                 className="rounded-lg border border-gray-700 bg-gray-900 px-3 py-3 outline-none transition focus:border-blue-500
                 col-span-6
                 "
@@ -126,10 +126,10 @@ function EvaluationRow({ name, grade, weight, index, evaluations, removeHandler,
                 "
                 onChange={(e) => setWeight(index, e.target.value)}
                 value={weight !== null ? weight : ''}
-              />
-              <span className="bg-gray-700 text-center flex justify-center items-center px-2 rounded-lg">
-                %
-              </span>
+                />
+                <span className="bg-gray-700 text-center flex justify-center items-center px-2 rounded-lg">
+                  %
+                </span>
               </div>
 
 
