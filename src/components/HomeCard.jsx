@@ -149,7 +149,7 @@ function HomeCard() {
         >
           Calcular
         </button>
-        {result? <ResultCard result={result}/>:null}
+        {result? <ResultCard configGrade={configGrade} targetGrade={targetGrade} result={result}/>:null}
 
       </section>
     
