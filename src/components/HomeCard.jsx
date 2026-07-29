@@ -137,7 +137,7 @@ function HomeCard() {
         <div className="my-4 h-px bg-gray-700" />
 
         
-        <TargetGrade handlerInput={targetGradeHandler} targetGrade={targetGrade} totalWeight={totalWeight} />
+        <TargetGrade handlerInput={targetGradeHandler} totalWeight={totalWeight} />
 
 
         {/* Botón */}
