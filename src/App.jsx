@@ -21,7 +21,7 @@ function App() {
       <footer className="fixed bottom-4 right-10 flex">
       
         <a
-          href="https://github.com/betra0"
+          href="https://github.com/betra0/que-nota-necesito"
           target="_blank"
           rel="noopener noreferrer"
           className="
