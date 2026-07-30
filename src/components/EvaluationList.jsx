@@ -26,10 +26,10 @@ function EvaluationList({ evaluations, addEvaluation, removeEvaluation, updateEv
               <IconHelpCircle/>
             </button>
           </div>
-          <div className="mb-2 grid grid-cols-14 gap-3 text-xs uppercase tracking-wider text-gray-500">
+          <div className="mb-2 grid grid-cols-16 gap-3 text-xs uppercase tracking-wider text-gray-500">
             <span className="col-span-1">#</span>
-            <span className="col-span-6">Nombre (opcional)</span>
-            <span className="col-span-3">Nota</span>
+            <span className="col-span-7">Nombre (opcional)</span>
+            <span className="col-span-4">Nota</span>
             <span className="col-span-4">Ponderación</span>
           </div>
 
@@ -94,14 +94,14 @@ function EvaluationRow({ name, grade, weight, index, evaluations, removeHandler,
 
   
   return (
-    <div className="grid grid-cols-14 gap-2">
+    <div className="grid grid-cols-16 gap-2">
               <button className="col-span-1 " onClick={() => removeHandler(index)}>
                 x
               </button>
               <input
                 placeholder="Ej: Prueba o Taller (opcional)"
                 className="rounded-lg border border-gray-700 bg-gray-900 px-3 py-3 outline-none transition focus:border-blue-500
-                col-span-6
+                col-span-7
                 "
                 onChange={(e) => setName(index, e.target.value)}
                 value={name}
@@ -109,7 +109,7 @@ function EvaluationRow({ name, grade, weight, index, evaluations, removeHandler,
               <input
                 placeholder="?"
                 className="rounded-lg border border-gray-700 bg-gray-900 px-3 py-3 text-center outline-none transition focus:border-blue-500
-                min-w-0 col-span-3"
+                min-w-0 col-span-4"
                 onChange={(e) => setGrade(index, e.target.value)}
                 value={grade !== null ? grade : ''}
               />
