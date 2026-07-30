@@ -3,7 +3,7 @@ import EvaluationList from "./EvaluationList"
 import ModeSelector from "./ModeSelector"
 import ResultCard from "./ResultCard"
 import TargetGrade from "./TargetGrade"
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 
 
 
@@ -17,6 +17,8 @@ function HomeCard() {
   const [configGrade, setConfigGrade] = useState({'gradeMin': 1.0, 'gradeMax': 7.0});
   const [targetGrade, setTargetGrade] = useState('4.0');
   const [result, setResult] =useState(null)
+  //referencia para ejecutar scroll a el resultado
+  const resultRef = useRef(null);
 
   const validate = (evaluations, configGrade, targetGrade) => {
     // Validar que solo alla solo una evaluación sin nota, esten todas las ponderaciones, y este la nota objetivo y los config de nota minima y maxima
@@ -88,7 +90,16 @@ function HomeCard() {
 
   useEffect(() => {
     setResult(null)
-}, [evaluations, targetGrade, configGrade]);
+  }, [evaluations, targetGrade, configGrade]);
+
+  useEffect(() => {
+    if (result) {
+      resultRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [result]);
 
   const allValid = validationResults.grade && validationResults.weight && validationResults.target && validationResults.config;
   const colorSumitButton = allValid ? 'bg-blue-600 hover:bg-blue-500' : 'bg-gray-600 cursor-not-allowed';
@@ -150,7 +161,14 @@ function HomeCard() {
         >
           Calcular
         </button>
-        {result? <ResultCard configGrade={configGrade} targetGrade={targetGrade} result={result}/>:null}
+        {result ? (
+          <div ref={resultRef}>
+            <ResultCard
+              configGrade={configGrade}
+              result={result}
+            />
+          </div>
+        ) : null}
 
       </section>
     
