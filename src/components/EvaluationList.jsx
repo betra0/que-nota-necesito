@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IconHelpCircle, IconPlus } from '@tabler/icons-react';
+import { IconHelpCircle, IconPlus, IconXMark} from '@tabler/icons-react';
 
 function EvaluationList({ evaluations, addEvaluation, removeEvaluation, updateEvaluation, configGrade }) {
   
@@ -96,7 +96,7 @@ function EvaluationRow({ name, grade, weight, index, evaluations, removeHandler,
   return (
     <div className="grid grid-cols-16 gap-2">
               <button className="col-span-1 " onClick={() => removeHandler(index)}>
-                x
+                <IconXMark stroke={2} size={20} />
               </button>
               <input
                 placeholder="Ej: Prueba o Taller (opcional)"
