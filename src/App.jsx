@@ -10,7 +10,14 @@ import githubLogo from './assets/github.svg'
 function App() {
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="
+      min-h-screen
+      bg-gray-950
+      bg-[radial-gradient(circle_at_15%_15%,rgba(139,92,246,0.22),transparent_30%),radial-gradient(circle_at_85%_85%,rgba(59,130,246,0.18),transparent_30%)]
+      text-white
+    ">
+
+
       <main className="mx-auto flex min-h-screen max-w-xl flex-col px-5 py-10">
 
         <HomeCard />

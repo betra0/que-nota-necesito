@@ -133,7 +133,9 @@ function HomeCard() {
       </header>
 
       {/* Card Principal */}
-      <section className="rounded-3xl border border-gray-700 bg-gray-800 p-6 shadow-2xl">
+      <section className="rounded-3xl bg-gray-800/70
+ border border-gray-700/50
+ backdrop-blur-sm p-6 shadow-2xl">
 
         
         {/* Modos */}
