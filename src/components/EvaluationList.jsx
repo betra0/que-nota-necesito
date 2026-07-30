@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IconHelpCircle } from '@tabler/icons-react';
+import { IconHelpCircle, IconPlus } from '@tabler/icons-react';
 
 function EvaluationList({ evaluations, addEvaluation, removeEvaluation, updateEvaluation, configGrade }) {
   
@@ -54,8 +54,8 @@ function EvaluationList({ evaluations, addEvaluation, removeEvaluation, updateEv
 
           <section className="space-y-3 flex items-center justify-center mt-3">
             <button 
-            className="text-xl text-white bg-blue-600 rounded-xl px-5 py-2 " onClick={addHandler}>
-              +
+            className="text-xl text-white bg-blue-600 rounded-xl px-3 py-3 " onClick={addHandler}>
+              <IconPlus stroke={2} />
             </button>
           </section>
 
