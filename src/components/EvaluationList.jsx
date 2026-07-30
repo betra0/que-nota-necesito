@@ -99,7 +99,7 @@ function EvaluationRow({ name, grade, weight, index, evaluations, removeHandler,
                 <IconXMark stroke={2} size={20} />
               </button>
               <input
-                placeholder="Ej: Prueba o Taller (opcional)"
+                placeholder="Ej: Prueba 1 (opcional)"
                 className="rounded-lg border border-gray-700 bg-gray-900 px-2 py-3 outline-none transition focus:border-blue-500
                 col-span-7
                 "

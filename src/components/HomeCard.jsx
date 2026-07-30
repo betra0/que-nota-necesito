@@ -125,11 +125,10 @@ function HomeCard() {
           ¿Qué nota necesito?
         </h1>
         <p className="mt-3 text-gray-400">
-          Calcula la nota mínima necesaria para pasar un ramo.
+          Calcula la nota mínima que necesitas para aprobar tu asignatura.
         </p>
         <p className="mt-3 text-gray-500 text-sm">
-          coloca tus notas y ponderaciones de cada evaluación y la nota final que quieres obtener, y te diremos la nota mínima que necesitas en la o las evaluaciones que te falten para alcanzar tu objetivo.
-  
+          Ingresa las notas que ya tienes y sus ponderaciones. Deja vacía la nota que te falta y te diremos cuánto necesitas sacar para alcanzar tu objetivo.
         </p>
       </header>
 
@@ -158,7 +157,7 @@ function HomeCard() {
 
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-lg font-semibold">
-            Nota objetivo y Configuracion
+            Nota objetivo
           </h2>
           <button className="text-sm text-blue-400 hover:text-blue-300">
             <IconHelpCircle/>

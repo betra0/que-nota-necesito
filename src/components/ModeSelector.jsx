@@ -17,7 +17,7 @@ function ModeSelector() {
                 Me falta una nota
               </div>
               <p className="mt-1 text-sm text-gray-400">
-                Calcula una única nota pendiente.
+                Calcula cuánto necesitas sacar en la evaluación que te falta.
               </p>
             </button>
             <button

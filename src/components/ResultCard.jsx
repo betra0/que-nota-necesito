@@ -5,7 +5,7 @@ function ResultCard({
 }) {
 
   let text1 = "Necesitas al menos un";
-  let text2 = "para aprobar el ramo";
+  let text2 = "en la evaluación que te falta para alcanzar tu nota objetivo.";
 
   const gradeMin = parseFloat(configGrade.gradeMin);
   const gradeMax = parseFloat(configGrade.gradeMax);
@@ -24,7 +24,7 @@ function ResultCard({
 
   if (result.gradeMissing > gradeMax) {
     // La nota que necesita es mayor que el máximo
-    text1 = "Lamentablemente necesitas una nota más alta que";
+    text1 = "Lamentablemente, necesitas una nota superior a";
     notaTexto = formatter.format(gradeMax);
 
     signoTexto = ">";
@@ -32,7 +32,7 @@ function ResultCard({
 
   } else if (result.gradeMissing <= gradeMin) {
     // La nota mínima que necesita está por debajo del mínimo
-    text1 = "¡Felicidades! Necesitas al menos un";
+    text1 = "¡Felicidades! Solo necesitas un";
 
     notaTexto = formatter.format(gradeMin);
 
