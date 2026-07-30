@@ -1,9 +1,11 @@
 import { oneMissingCalculator } from "../services/oneMissingCalculator";
+import ConfigCard from "./ConfigCard";
 import EvaluationList from "./EvaluationList"
 import ModeSelector from "./ModeSelector"
 import ResultCard from "./ResultCard"
 import TargetGrade from "./TargetGrade"
 import { useState, useEffect, useMemo, useRef } from "react";
+import { IconHelpCircle } from '@tabler/icons-react';
 
 
 
@@ -14,7 +16,7 @@ function HomeCard() {
     { name: '', grade: '', weight: '' },
 
   ]);
-  const [configGrade, setConfigGrade] = useState({'gradeMin': 1.0, 'gradeMax': 7.0});
+  const [configGrade, setConfigGrade] = useState({'gradeMin': '1.0', 'gradeMax': '7.0'});
   const [targetGrade, setTargetGrade] = useState('4.0');
   const [result, setResult] =useState(null)
   //referencia para ejecutar scroll a el resultado
@@ -41,6 +43,12 @@ function HomeCard() {
     }
     setTargetGrade(value)
   }
+  const configGradeHandler = (field, value) => {
+  setConfigGrade(prev => ({
+    ...prev,
+    [field]: value
+  }));
+};
 
   const sumWeight = () => {
    return evaluations.reduce((sum, evaluation) => sum + (evaluation.weight===''?0:parseFloat(evaluation.weight)),0)
@@ -148,8 +156,16 @@ function HomeCard() {
         {/* Separador */}
         <div className="my-4 h-px bg-gray-700" />
 
-        
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-semibold">
+            Nota objetivo y Configuracion
+          </h2>
+          <button className="text-sm text-blue-400 hover:text-blue-300">
+            <IconHelpCircle/>
+          </button>
+        </div>
         <TargetGrade handlerInput={targetGradeHandler} totalWeight={totalWeight} targetGrade={targetGrade} />
+        <ConfigCard configGrade={configGrade} updateConfig={configGradeHandler} />
 
 
         {/* Botón */}

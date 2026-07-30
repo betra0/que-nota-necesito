@@ -11,10 +11,7 @@ function TargetGrade({
   return (
     <>   
         {/* Objetivo */}
-        <div>
-          <label className="mb-3 block font-semibold">
-            Nota objetivo
-          </label>
+
             <section className="grid grid-cols-16 gap-3">
               <input
               className="w-full rounded-xl border border-gray-700 bg-gray-900 px-4 py-3 text-center text-lg outline-none transition focus:border-blue-500
@@ -29,7 +26,7 @@ function TargetGrade({
                 {totalWeight} %
                 </span>
             </section>
-        </div>
+
     </>
 
   )}

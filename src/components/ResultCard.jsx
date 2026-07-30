@@ -7,6 +7,9 @@ function ResultCard({
   let text1 = "Necesitas al menos un";
   let text2 = "para aprobar el ramo";
 
+  const gradeMin = parseFloat(configGrade.gradeMin);
+  const gradeMax = parseFloat(configGrade.gradeMax);
+
   const nota = Math.round(result.gradeMissing * 100) / 100;
 
   let notaTexto = Number.isInteger(nota)
@@ -16,24 +19,19 @@ function ResultCard({
   let signoTexto = "";
   let color = "text-blue-400";
 
-  if (result.gradeMissing > configGrade.gradeMax) {
+  if (result.gradeMissing > gradeMax) {
     // La nota que necesita es mayor que el máximo
     text1 = "Lamentablemente necesitas una nota más alta que";
-    
-    notaTexto = Number.isInteger(configGrade.gradeMax)
-      ? configGrade.gradeMax.toFixed(1)
-      : configGrade.gradeMax.toString();
+    notaTexto = gradeMax.toFixed(1);
 
     signoTexto = ">";
     color = "text-red-400";
 
-  } else if (result.gradeMissing <= configGrade.gradeMin) {
+  } else if (result.gradeMissing <= gradeMin) {
     // La nota mínima que necesita está por debajo del mínimo
     text1 = "¡Felicidades! Necesitas al menos un";
 
-    notaTexto = Number.isInteger(configGrade.gradeMin)
-      ? configGrade.gradeMin.toFixed(1)
-      : configGrade.gradeMin.toString();
+    notaTexto = gradeMin.toFixed(1);
 
     color = "text-green-400";
   }
