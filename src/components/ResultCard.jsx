@@ -12,9 +12,12 @@ function ResultCard({
 
   const nota = Math.round(result.gradeMissing * 100) / 100;
 
-  let notaTexto = Number.isInteger(nota)
-    ? nota.toFixed(1)
-    : nota.toString();
+  // Formatea según la región/idioma configurado en el navegador
+  const formatter = new Intl.NumberFormat(navigator.language, {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 2,
+  });
+  let notaTexto = formatter.format(nota);
 
   let signoTexto = "";
   let color = "text-blue-400";
@@ -22,7 +25,7 @@ function ResultCard({
   if (result.gradeMissing > gradeMax) {
     // La nota que necesita es mayor que el máximo
     text1 = "Lamentablemente necesitas una nota más alta que";
-    notaTexto = gradeMax.toFixed(1);
+    notaTexto = formatter.format(gradeMax);
 
     signoTexto = ">";
     color = "text-red-400";
@@ -31,7 +34,7 @@ function ResultCard({
     // La nota mínima que necesita está por debajo del mínimo
     text1 = "¡Felicidades! Necesitas al menos un";
 
-    notaTexto = gradeMin.toFixed(1);
+    notaTexto = formatter.format(gradeMin);
 
     color = "text-green-400";
   }
