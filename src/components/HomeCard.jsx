@@ -110,7 +110,7 @@ function HomeCard() {
   }, [result]);
 
   const allValid = validationResults.grade && validationResults.weight && validationResults.target && validationResults.config;
-  const colorSumitButton = allValid ? 'bg-blue-600 hover:bg-blue-500' : 'bg-gray-600 cursor-not-allowed';
+  const colorSumitButton = allValid ? 'bg-blue-600/90 hover:bg-blue-500' : 'bg-gray-600/60 cursor-not-allowed';
 
 
 
