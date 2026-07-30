@@ -107,11 +107,12 @@ function EvaluationRow({ name, grade, weight, index, evaluations, removeHandler,
                 value={name}
               />
               <input
+              translate="no"
                 type="number"
                 step='0.1'
                 min={configGrade.gradeMin}
                 placeholder="?"
-                className="rounded-lg border border-gray-700 bg-gray-900 px-2 py-3 text-center outline-none transition focus:border-blue-500
+                className="notranslate rounded-lg border border-gray-700 bg-gray-900 px-2 py-3 text-center outline-none transition focus:border-blue-500
                 min-w-0 col-span-4"
                 onChange={(e) => setGrade(index, e.target.value)}
                 value={grade !== null ? grade : ''}
