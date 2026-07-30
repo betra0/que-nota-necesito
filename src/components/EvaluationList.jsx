@@ -100,7 +100,7 @@ function EvaluationRow({ name, grade, weight, index, evaluations, removeHandler,
               </button>
               <input
                 placeholder="Ej: Prueba o Taller (opcional)"
-                className="rounded-lg border border-gray-700 bg-gray-900 px-3 py-3 outline-none transition focus:border-blue-500
+                className="rounded-lg border border-gray-700 bg-gray-900 px-2 py-3 outline-none transition focus:border-blue-500
                 col-span-7
                 "
                 onChange={(e) => setName(index, e.target.value)}
@@ -108,7 +108,7 @@ function EvaluationRow({ name, grade, weight, index, evaluations, removeHandler,
               />
               <input
                 placeholder="?"
-                className="rounded-lg border border-gray-700 bg-gray-900 px-3 py-3 text-center outline-none transition focus:border-blue-500
+                className="rounded-lg border border-gray-700 bg-gray-900 px-2 py-3 text-center outline-none transition focus:border-blue-500
                 min-w-0 col-span-4"
                 onChange={(e) => setGrade(index, e.target.value)}
                 value={grade !== null ? grade : ''}
@@ -121,7 +121,7 @@ function EvaluationRow({ name, grade, weight, index, evaluations, removeHandler,
               ">
                 <input
                 placeholder="%"
-                className="flex-1 w-full h-full m-0 px-3 py-3 rounded-lg border border-gray-700/0 text-center outline-none transition focus:border-blue-500
+                className="flex-1 w-full h-full m-0 px-0 py-3 rounded-lg border border-gray-700/0 text-center outline-none transition focus:border-blue-500
                 min-w-0
                 "
                 onChange={(e) => setWeight(index, e.target.value)}

@@ -15,15 +15,15 @@ function TargetGrade({
           <label className="mb-3 block font-semibold">
             Nota objetivo
           </label>
-            <section className="grid grid-cols-14 gap-3">
+            <section className="grid grid-cols-16 gap-3">
               <input
               className="w-full rounded-xl border border-gray-700 bg-gray-900 px-4 py-3 text-center text-lg outline-none transition focus:border-blue-500
-                col-span-11
+                col-span-12
               "
               value={targetGrade}
               onChange={(e)=>{handlerInput(e.target.value)}}
               />
-              <span className="col-span-3 w-full rounded-xl border border-gray-700 bg-gray-800 flex items-center justify-center
+              <span className="col-span-4 w-full rounded-xl border border-gray-700 bg-gray-800 flex items-center justify-center
                 text-md font-semibold text-gray-400
               "  >
                 {totalWeight} %
