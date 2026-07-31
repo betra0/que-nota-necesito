@@ -79,10 +79,31 @@ function EvaluationRow({ name, grade, weight, index, evaluations, removeHandler,
     updateEvaluation(index, 'name', value);
   }
   const setGrade = (index, value) => {
-    if (value !== '' && (isNaN(value) || value <= 0 || value > parseFloat(configGrade.gradeMax))) {
+    const max = parseFloat(configGrade.gradeMax);
+    const limite = Math.ceil(max / 10) * 10;
+
+    if (value === '') {
+      updateEvaluation(index, 'grade', '');
       return;
     }
-    //console.log('Updating grade for index', index, 'to value', value, typeof value);     
+    const numero = parseFloat(value);
+    if (isNaN(numero) || numero <= 0) {
+      return;
+    }
+    //asitencia con , y . al usario
+    if (numero > max) {
+      if (numero > limite) {
+        const corregido = Math.round(numero * 0.1 * 10) / 10;
+
+        if (corregido > max) {
+          return;
+        }
+        value = corregido.toString();
+      } else {
+        return;
+      }
+    }
+
     updateEvaluation(index, 'grade', value);
   }
   const setWeight = (index, value) => {
