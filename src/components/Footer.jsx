@@ -20,7 +20,7 @@ function Footer() {
 
           {/* GitHub */}
           <a
-            href="https://github.com/danycode-dev   /que-nota-necesito"
+            href="https://github.com/danycode-dev/que-nota-necesito"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
