@@ -1,0 +1,25 @@
+{
+  "name": "¿Qué Nota Necesito?",
+  "short_name": "QueNota",
+  "description": "Calcula la nota que necesitas para aprobar tu asignatura. Ingresa tus evaluaciones y descubre la nota mínima que necesitas.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "es-CL",
+  "background_color": "#030712",
+  "theme_color": "#2563eb",
+  "categories": [
+    "education",
+    "productivity",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
